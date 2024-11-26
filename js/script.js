@@ -1,80 +1,112 @@
+ const studentData = {
+    "12345": {
+        name: "أحمد محمد",
+        college: "كلية الهندسة",
+        phone: "0123456789",
+        id: "A123456"
+    },
+    "67890": {
+        name: "فاطمة علي",
+        college: "كلية الطب",
+        phone: "0987654321",
+        id: "B987654"
+    }
+};
 
 document.addEventListener('DOMContentLoaded', function() {
     const addStudentButton = document.querySelector('.add_button');
-    const minusStudentButton = document.querySelector('.minus-icon');
+    const minusStudentButton = document.querySelector('minus-icon');
     const studentContainer = document.querySelector('.add_input');
-    const otherAttachmentsCheckbox = document.getElementById('other_attachments');
-    const zipFileInput = document.getElementById('zip_file');
-        var x=2;
-        const number=[,,2];
-        const max=Math.max.apply(null,number);
-    // const maxss=Math.max(...number);
-    //     const ma=number.reduce((max,current)=>Math.max(max,current),number[0]);
+    let studentCount = 0; // عدد الطلاب المضافين
+
+    // دالة لتحديث الأرقام
+    function updateStudentNumbers() {
+        const studentMembers = document.querySelectorAll('.team-member');
+        studentMembers.forEach((member, index) => {
+            const numberDisplay = member.querySelector('.student-number');
+            numberDisplay.textContent = `رقم الطالب: ${index + 1}`;
+ 
+        });
+     
+        // عرض أو إخفاء زر الطرح بناءً على عدد الأعضاء
+        if (studentMembers.length > 1) {
+            minusStudentButton.style.display = 'inline';
+        } else {
+            minusStudentButton.style.display = 'none';
+        }
+    }
+
     addStudentButton.addEventListener('click', function() {
         const newStudentFields = document.createElement('div');
-        newStudentFields.className = 'row';
+        newStudentFields.className = 'team-member';
         newStudentFields.innerHTML = `
-                                                      <div class="     box_team  "   >
-              <div id="teamMembers">
-                      <h4>أعضاء الفريق | Team Members</h4>
-                      <div class="team-member">
-                          <input type="text" placeholder="الرقم الأكاديمي | Academic ID" required>
-                          <input type="text" placeholder="اسم الطالب | Student Name" required>
-                          <input type="text" placeholder="الكلية| College " required>
-                          <input type="text" placeholder="رقم الهاتف | Number Phone" required>
-                          <input type="text" placeholder="رقم الهوية | ID Number" required>
-                      </div>
-                    
-                  </div>
- 
-                                                        </div>
- 
+            <div class="box_team">
+                <div id="teamMembers">
+                                        <span class="student-number">رقم الطالب: ${studentCount + 2}</span>
 
+                    <div class="team-member">
+                        <input type="text" placeholder="الرقم الأكاديمي | Academic ID" required id="academicId">
+                        <input type="text" placeholder="اسم الطالب | Student Name" disabled required id="studentName">
+                        <input type="text" placeholder="الكلية | College" disabled required id="college">
+                        <input type="text" placeholder="رقم الهاتف | Number Phone" disabled required id="phoneNumber">
+                        <input type="text" placeholder="رقم الهوية | ID Number" disabled required id="idNumber">
+                    </div>
+                </div>
+            </div>
         `;
-        
 
-        const newAddStudentButton = document.createElement('div');
-        newAddStudentButton.className = 'add-student';
-        newAddStudentButton.innerHTML = number[x++];
+        // Append the new fields to the container
+        studentContainer.appendChild(newStudentFields);
+        studentCount++;
 
-        `
-         
-             
-         `;
-        const newStudentContainer = document.createElement('div');
-        newStudentContainer.className = 'add_input';
-        newStudentContainer.appendChild(newStudentFields);
-        newStudentContainer.appendChild(newAddStudentButton);
-
-        studentContainer.parentNode.insertBefore(newStudentContainer, studentContainer.nextSibling);
-
-        // Show the minus icon in the main container if there are more than one containers
-        if (document.querySelectorAll('.add_input').length > 1) {
-            minusStudentButton.style.display = 'inline';
-            number.push(x);
-        }
+        // Update the numbers
+        updateStudentNumbers();
     });
 
     minusStudentButton.addEventListener('click', function() {
-        const studentContainers = document.querySelectorAll('.add_input');
-        if (studentContainers.length > 1) {
-            studentContainers[studentContainers.length - 1].remove();
-             
-
+        const studentMembers = document.querySelectorAll('.team-member');
+        if (studentMembers.length > 1) {
+            studentMembers[studentMembers.length - 1].remove();
+            studentCount--;
         }
-        // Hide the minus icon in the main container if there is only one container left
-        if (document.querySelectorAll('.add_input').length === 1) {
-            minusStudentButton.style.display = 'none';
-            x=2;
-            number=[2];
-            number.remove(max);
+        // Update the numbers
+        updateStudentNumbers();
+    });
 
+    // Add event listener to the academic ID input fields to fetch student data
+    studentContainer.addEventListener('input', function(event) {
+        if (event.target.placeholder === "الرقم الأكاديمي | Academic ID") {
+            const academicIdInput = event.target;
+            const studentNameInput = academicIdInput.nextElementSibling;
+            const collegeInput = studentNameInput.nextElementSibling;
+            const phoneNumberInput = collegeInput.nextElementSibling;
+            const idNumberInput = phoneNumberInput.nextElementSibling;
+
+            const academicId = academicIdInput.value;
+
+            // Check if the academic ID exists in the data
+            if (studentData[academicId]) {
+                const student = studentData[academicId];
+                studentNameInput.value = student.name;
+                collegeInput.value = student.college;
+                phoneNumberInput.value = student.phone;
+                idNumberInput.value = student.id;
+
+                // Enable the fields
+                studentNameInput.disabled = false;
+                collegeInput.disabled = false;
+                phoneNumberInput.disabled = false;
+                idNumberInput.disabled = false;
+            } else {
+                // Clear the fields if no data found
+                studentNameInput.value = '';
+                collegeInput.value = '';
+                phoneNumberInput.value = '';
+                idNumberInput.value = '';
+            }
         }
     });
 });
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
     const otherAttachmentsCheckbox = document.getElementById('other_attachments');
     const zipFileInput = document.getElementById('zip_file');
@@ -86,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     otherAttachmentsCheckbox.addEventListener('change', function() {
         if (this.checked) {
-            zipFileInput.style.display = 'inline';
+            zipFileInput.style.display = 'block';
         } else {
             zipFileInput.style.display = 'none';
         }
@@ -407,4 +439,4 @@ function getStatusText(status) {
 }
 
 
-
+ 
