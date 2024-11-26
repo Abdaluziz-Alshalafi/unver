@@ -36,7 +36,14 @@ body {
     direction: rtl;
 }
  
-
+@media (max-width: 764px) {
+    .row {    
+      display: block;
+   
+                margin-right: 0px;
+}
+     
+}
 
 @media(min-width: 400px){
 
@@ -45,7 +52,10 @@ body {
 
   max-width: 400px;
 }
-
+.row {
+  
+                 margin-right:-22px;
+}
 .grid{
 
 
@@ -125,7 +135,7 @@ margin: 20px;
           direction: rtl;
       ">
             <div class="row">
-              <div class="col main_nav_col  flex-row align-items-center justify-content-start" style="display: flex;">
+              <div class="col main_nav_col  flex-row align-items-center justify-content-start" >
 
 
             <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -140,11 +150,11 @@ margin: 20px;
                   <div class="main_nav_container ml-auto" id="navbarSupportedContent">
                       <ul class="main_nav_list" >
                         <li class="main_nav_item" id="main"><a class="nav-link  "  href="home.html">الرئيسية <span class="sr-only">(current)</span></a></li>
-                        <li class="main_nav_item" id="selected"><a class="nav-link" onclick="handleLogin('student', event)" >اضافة مشروع جديد </a></li>
+                        <li class="main_nav_item" id="selected"><a class="nav-link" href="home.html" >اضافة مشروع جديد </a></li>
                         <li class="main_nav_item" ><a class="nav-link" href="complet.html">اكمال المشروع</a></li>
                         <li class="main_nav_item"><a class="nav-link" href="sure.html">الاستعلام عن المشروع</a></li>
                         <li class="main_nav_item"><a class="nav-link" href="index.html"> تسجيل الخروج</a></li>
-                        <li class="main_nav_item"> <a onclick="showLoginForm('admin')"class="nav-link" >دخول المشرف </a></li>
+                        <li class="main_nav_item"> <a href="home.html" class="nav-link" >دخول المشرف </a></li>
   
                   </ul>
                 </div>
@@ -162,11 +172,11 @@ margin: 20px;
 			<div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
 			<ul>
 				<li class="menu_item" id="main"><a class="nav-link  "  href="home.html">الرئيسية <span class="sr-only">(current)</span></a></li>
-				<li class="menu_item" id="selected"><a class="nav-link" onclick="handleLogin('student', event)" >اضافة مشروع جديد </a></li>
+				<li class="menu_item" id="selected"><a class="nav-link"  href="home.html" >اضافة مشروع جديد </a></li>
 				<li class="menu_item"><a class="nav-link" href="complet.html">اكمال المشروع</a></li>
 				<li class="menu_item"><a class="nav-link" href="sure.html">الاستعلام عن المشروع</a></li>
 				<li class="menu_item"><a class="nav-link" href="index.html"> تسجيل الخروج</a></li>
-        <li class="menu_item"><a onclick="showLoginForm('admin')" class="nav-link"  >دخول المشرف </a></li>
+        <li class="menu_item"><a href="home.html" class="nav-link"  >دخول المشرف </a></li>
 
 			</ul>
 		</div>
@@ -186,7 +196,7 @@ margin: 20px;
                                         
                                             </label>
                                             <form id="projectForm"> 
-                                          <input placeholder=" رقم المشروع" type="number" name="id_project" id="id_project" required  class="rounded-lg  appearance-none border   py-2 px-4 md:mb-0 mb-4 bg-white     ">
+                                          <input placeholder=" رقم المشروع" type="number" name="id_project" id="id_project" style="width: auto;" required  class="rounded-lg  appearance-none border   py-2 px-4 md:mb-0 mb-4 bg-white     ">
                                         
                                     
                                           
@@ -202,11 +212,11 @@ margin: 20px;
                             </div>
                                       <h5 class="md:py-44" >Project Attachments</h5>
                                       <div class="file-inputs">
-                                          <input type="file" id="pdf_file" accept="application/pdf">
-                                          <input type="file" id="doc_file" accept=".doc,.docx">
-                                          <input type="file" id="zip_file"  accept=".zip" style="display: none">
+                                          <input type="file" id="pdf_file" style="width: auto;" accept="application/pdf">
+                                          <input type="file" id="doc_file" style="width: auto;" accept=".doc,.docx">
+                                          <input type="file" id="zip_file"   accept=".zip" style="display: none">
                                             <label for="other_attachments">
-                                              <input type="checkbox" id="other_attachments" name="other_attachments"> Other attachments
+                                              <input type="checkbox" id="other_attachments" style="width: auto;" name="other_attachments"> Other attachments
                                           </label>
                                       </div> 
 
