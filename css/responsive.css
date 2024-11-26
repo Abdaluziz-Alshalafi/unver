@@ -1,4 +1,4 @@
-:root {
+ :root {
 	/* نظام الألوان الأساسي */
 	--primary-gradient: linear-gradient(to left, #000529 10%, #002055 35%, #005db5 87%, #0074d9 100%);
 	--primary-color: #0074d9;
@@ -6,12 +6,12 @@
 	--text-light: #ffffff;
 	--text-dark: #333333;
 	--background-light: #f8f9fa;
-	--border-color: rgba(255, 255, 255, 0.1);
+	--border-color: rgba(31, 20, 20, 0.1);
 	
 	/* المسافات والأحجام */
 	--spacing-xs: 0.5rem;
-	--spacing-sm: 1rem;
-	--spacing-md: 1.5rem;
+	--spacing-sm: 1.40rem;
+	/* --spacing-md: 1.5rem; */
 	--spacing-lg: 2rem;
 	--border-radius: 8px;
 	--container-width: 1200px;
@@ -70,14 +70,7 @@
   }
   
   /* النموذج */
-  .box_team {
-	background: var(--text-light);
-	border-radius: var(--border-radius);
-	padding: var(--spacing-lg);
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-	margin: var(--spacing-lg) auto;
-	max-width: 800px;
-  }
+ 
   
   /* المدخلات */
   .input {
@@ -98,7 +91,7 @@
   .appao-btn {
 	background: var(--primary-gradient);
 	color: var(--text-light);
-	padding: var(--spacing-sm) var(--spacing-md);
+	/* padding: var(--spacing-sm) var(--spacing-md); */
 	border: none;
 	border-radius: var(--border-radius);
 	cursor: pointer;
