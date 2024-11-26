@@ -10,8 +10,8 @@
 	
 	/* المسافات والأحجام */
 	--spacing-xs: 0.5rem;
-	--spacing-sm: 1.40rem;
-	/* --spacing-md: 1.5rem; */
+	--spacing-sm: 0.25rem;
+	--spacing-md: 1.40rem;
 	--spacing-lg: 2rem;
 	--border-radius: 8px;
 	--container-width: 1200px;
