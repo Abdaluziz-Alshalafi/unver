@@ -1,11 +1,11 @@
- const studentData = {
+const studentData = {
     "12345": {
         name: "أحمد محمد",
         college: "كلية الهندسة",
         phone: "0123456789",
         id: "A123456"
     },
-    "67890": {
+    "6789": {
         name: "فاطمة علي",
         college: "كلية الطب",
         phone: "0987654321",
@@ -15,7 +15,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     const addStudentButton = document.querySelector('.add_button');
-    const minusStudentButton = document.querySelector('minus-icon');
+    const minusStudentButton = document.querySelector('.minus-icon');
     const studentContainer = document.querySelector('.add_input');
     let studentCount = 0; // عدد الطلاب المضافين
 
@@ -24,16 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const studentMembers = document.querySelectorAll('.team-member');
         studentMembers.forEach((member, index) => {
             const numberDisplay = member.querySelector('.student-number');
-            numberDisplay.textContent = `رقم الطالب: ${index + 1}`;
- 
+            numberDisplay.textContent = `رقم الطالب: ${index + 2}`;
         });
-     
-        // عرض أو إخفاء زر الطرح بناءً على عدد الأعضاء
-        if (studentMembers.length > 1) {
-            minusStudentButton.style.display = 'inline';
-        } else {
-            minusStudentButton.style.display = 'none';
-        }
     }
 
     addStudentButton.addEventListener('click', function() {
@@ -42,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         newStudentFields.innerHTML = `
             <div class="box_team">
                 <div id="teamMembers">
-                                        <span class="student-number">رقم الطالب: ${studentCount + 2}</span>
+                                        <span class="student-number">رقم الطالب: ${studentCount + 1}</span>
 
                     <div class="team-member">
                         <input type="text" placeholder="الرقم الأكاديمي | Academic ID" required id="academicId">
@@ -61,6 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Update the numbers
         updateStudentNumbers();
+
+        // Show the minus icon if there are more than one containers
+        if (document.querySelectorAll('.team-member').length > 1) {
+            minusStudentButton.style.display = 'inline';
+        }
     });
 
     minusStudentButton.addEventListener('click', function() {
@@ -71,6 +68,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         // Update the numbers
         updateStudentNumbers();
+
+        // Hide the minus icon if there is only one container left
+        if (document.querySelectorAll('.team-member').length === 1) {
+            minusStudentButton.style.display = 'none';
+        }
     });
 
     // Add event listener to the academic ID input fields to fetch student data
@@ -107,6 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const otherAttachmentsCheckbox = document.getElementById('other_attachments');
     const zipFileInput = document.getElementById('zip_file');
