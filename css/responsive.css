@@ -75,7 +75,7 @@
   /* المدخلات */
   .input {
 	width: 100%;
-	padding: var(--spacing-sm);
+/* 	padding: var(--spacing-sm); */
 	border: 1px solid var(--border-color);
 	border-radius: var(--border-radius);
 	margin-bottom: var(--spacing-sm);
